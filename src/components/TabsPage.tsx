@@ -1,14 +1,12 @@
+import { Link, useParams } from 'react-router-dom';
+import { tabs } from '../App';
+import cn from 'classnames';
 
-
-import { Link, useParams } from "react-router-dom";
-import { tabs } from "../App";
-import cn from "classnames";
-
-import { Tab } from "../types/Tab";
+import { Tab } from '../types/Tab';
 
 export const TabsPage = () => {
   const { tabId } = useParams();
-  const activeTab = tabs.find((tab : Tab) => tab.id === tabId)
+  const activeTab = tabs.find((tab: Tab) => tab.id === tabId);
 
   return (
     <div className="section">
@@ -18,7 +16,11 @@ export const TabsPage = () => {
         <div className="tabs is-boxed">
           <ul>
             {tabs.map(tab => (
-              <li key={tab.id}data-cy="Tab" className={cn({ 'is-active': tab.id === activeTab?.id })}>
+              <li
+                key={tab.id}
+                data-cy="Tab"
+                className={cn({ 'is-active': tab.id === activeTab?.id })}
+              >
                 <Link to={`/tabs/${tab.id}`}>{tab.title}</Link>
               </li>
             ))}
